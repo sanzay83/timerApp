@@ -14,7 +14,7 @@ body {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 20px;
-  width: 90%;
+  min-height: 90vh;
   max-width: 400px;
   margin: 30px 10px;
 }
@@ -61,6 +61,7 @@ form {
 
 input {
   background: rgba(255, 255, 255, 0.2);
+  height: 1rem;
   border: none;
   border-radius: 10px;
   padding: 10px;
@@ -75,13 +76,13 @@ input::placeholder {
 
 button {
   background: rgba(255, 255, 255, 0.2);
+  height: 2rem;
   border: none;
   border-radius: 10px;
   padding: 10px;
   color: #fff;
   cursor: pointer;
   transition: background 0.3s;
-  margin-top: 10px;
 }
 
 button:hover {
@@ -122,7 +123,8 @@ button:hover {
 }
 
 .add-item-time input {
-  width: 35%;
+  margin-left: 2px;
+  width: 24%;
 }
 
 @media (min-width: 600px) {
