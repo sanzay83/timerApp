@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
-import "./App.css";
+import "./App.scss";
 import chimeSound from "./chime.wav";
 import deleteIcon from "./delete.png";
 
 function App() {
+  const [isDark, setIsDark] = useState(false);
   const [items, setItems] = useState([]);
   const [activity, setActivity] = useState("");
   const [timeMin, setTimeMin] = useState("");
@@ -16,11 +17,11 @@ function App() {
 
   const handleAdd = (e) => {
     e.preventDefault();
-    if (!activity || (!timeMin && !timeSec)) return;
+    if (!timeMin && !timeSec) return;
     setItems([
       ...items,
       {
-        activity,
+        activity: `${activity ? activity : "Default"}`,
         timeMin: parseInt(timeMin) || 0,
         timeSec: parseInt(timeSec) || 0,
         completed: false,
@@ -105,15 +106,27 @@ function App() {
     );
   };
 
+  const handleButtonDark = () => {
+    setIsDark(!isDark);
+  };
+
   return (
-    <div className="app">
+    <div className={`app ${isDark ? "" : "light"}`}>
       <div className="container-title">
-        <h1>Timer App</h1>
+        <h1>TIMER APP</h1>
+        <div
+          className={`dark-mode-button `}
+          onClick={() => {
+            handleButtonDark();
+          }}
+        >
+          <div className={`${isDark ? "on" : "off"}`} />
+        </div>
       </div>
-      <div className="item-container">
+      <div className={`item-container ${isDark ? "" : "light-container"} `}>
         <div className="each-item">
-          <div className="left">Activity</div>
-          <div className="right">Time</div>
+          <div className="left">ACTIVITY</div>
+          <div className="right">TIME</div>
         </div>
         {items.map((item, index) => (
           <div
@@ -131,7 +144,7 @@ function App() {
                 className="delete-button"
                 onClick={() => handleDelete(index)}
               >
-                <img src={deleteIcon} alt="deleteIcon" />
+                <img height="20rem" src={deleteIcon} alt="deleteIcon" />
               </button>
             </div>
           </div>
@@ -139,16 +152,14 @@ function App() {
       </div>
       <form onSubmit={handleAdd}>
         <div className="add-item-section">
-          <div className="add-item-activity">
-            <input
-              type="text"
-              id="activity"
-              value={activity}
-              onChange={(e) => setActivity(e.target.value)}
-              placeholder="Activity"
-            />
-          </div>
-          <div className="add-item-time">
+          <input
+            type="text"
+            id="activity"
+            value={activity}
+            onChange={(e) => setActivity(e.target.value)}
+            placeholder="Activity"
+          />
+          <div className="time-container">
             <input
               type="number"
               id="timeMinute"
@@ -159,36 +170,36 @@ function App() {
             />
             <input
               type="number"
-              id="time"
+              id="timeSec"
               value={timeSec}
               onChange={(e) => setTimeSec(e.target.value)}
               placeholder="sec"
               min="0"
               max="59"
             />
+            <button className="add-button" type="submit">
+              ADD
+            </button>
           </div>
-          <button className="add-button" type="submit">
-            Add
-          </button>
         </div>
       </form>
       {items.length > 0 && currentItem === null && !showCongrats && (
         <button className="start-button" onClick={handleStart}>
-          Start
+          START
         </button>
       )}
       {currentItem !== null && (
         <div className="stop-pause-container">
           <button className="stop-button" onClick={handleStop}>
-            Stop
+            STOP
           </button>
           {isPause ? (
             <button className="continue-button" onClick={handlePause}>
-              Continue
+              CONTINUE
             </button>
           ) : (
             <button className="pause-button" onClick={handlePause}>
-              Pause
+              PAUSE
             </button>
           )}
         </div>
