@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import "./App.scss";
 import chimeSound from "./chime.wav";
 import deleteIcon from "./delete.png";
+import { MdNightsStay } from "react-icons/md";
+import { IoSunny } from "react-icons/io5";
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -120,9 +122,18 @@ function App() {
             handleButtonDark();
           }}
         >
-          <div className={`${isDark ? "on" : "off"}`} />
+          {!isDark ? (
+            <div className="on">
+              <IoSunny size={"1.5rem"} color="yellow" />
+            </div>
+          ) : (
+            <div className="off">
+              <MdNightsStay size={"1.5rem"} color="white" />
+            </div>
+          )}
         </div>
       </div>
+
       <div className={`item-container ${isDark ? "" : "light-container"} `}>
         <div className="each-item">
           <div className="left">ACTIVITY</div>
