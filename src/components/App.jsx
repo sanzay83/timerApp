@@ -4,6 +4,7 @@ import chimeSound from "./chime.wav";
 import deleteIcon from "./delete.png";
 import { MdNightsStay } from "react-icons/md";
 import { IoSunny } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 function App() {
   const [isDark, setIsDark] = useState(false);
@@ -16,6 +17,7 @@ function App() {
   const [showCongrats, setShowCongrats] = useState(false);
   const [isPause, setIsPause] = useState(false);
   const chimeRef = useRef(null);
+  const location = useNavigate();
 
   const handleAdd = (e) => {
     e.preventDefault();
@@ -112,10 +114,14 @@ function App() {
     setIsDark(!isDark);
   };
 
+  const handlePrivacyPolicy = () => {
+    location("/privacy");
+  };
+
   return (
     <div className={`app ${isDark ? "" : "light"}`}>
       <div className="container-title">
-        <h1>TIMER APP</h1>
+        <h1>QuickSet Timer</h1>
         <div
           className={`dark-mode-button `}
           onClick={() => {
@@ -221,6 +227,13 @@ function App() {
         </div>
       )}
       <audio ref={chimeRef} src={chimeSound} />
+      <button
+        style={{ position: "absolute", bottom: 1, marginBottom: "100px" }}
+        className="privacy-policy"
+        onClick={handlePrivacyPolicy}
+      >
+        Privacy Policy
+      </button>
     </div>
   );
 }
