@@ -8,7 +8,7 @@ import Privacypolicy from "./components/Privacypolicy";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Router>
+    <Router basename="/timerApp">
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/privacy" element={<Privacypolicy />} />
