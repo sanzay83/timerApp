@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.e033fe9e.css",
+    "main.js": "/static/js/main.fbc5bde7.js",
+    "static/media/chime.wav": "/static/media/chime.1cdad05794464c19064d.wav",
+    "index.html": "/index.html",
+    "main.e033fe9e.css.map": "/static/css/main.e033fe9e.css.map",
+    "main.fbc5bde7.js.map": "/static/js/main.fbc5bde7.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e033fe9e.css",
+    "static/js/main.fbc5bde7.js"
+  ]
+}
